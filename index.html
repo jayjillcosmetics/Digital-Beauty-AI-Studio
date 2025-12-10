@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Beauty AI Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#fff0f3',
+                100: '#ffe0e6',
+                200: '#ffc2cf',
+                300: '#ff94aa',
+                400: '#ff577b',
+                500: '#dc143c', // Crimson base
+                600: '#b00b2b',
+                700: '#8a0620',
+                800: '#6e071c',
+                900: '#5e0a1a',
+                950: '#dc143c', // Matching background request
+                gold: '#d4af37',
+              },
+              holiday: {
+                red: '#dc143c',
+                green: '#2b8a3e',
+                gold: '#fcc419',
+              },
+              page: '#dc143c',
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Lato', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      
+      /* Snowflake Animation */
+      .snowflake {
+        position: fixed;
+        top: -20px;
+        z-index: 0;
+        color: #fff;
+        text-shadow: 0 0 2px rgba(255,255,255,0.8);
+        user-select: none;
+        pointer-events: none;
+        animation-name: fall;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      
+      @keyframes fall {
+        to { transform: translateY(110vh); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.32.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#dc143c] min-h-screen text-slate-100 overflow-x-hidden selection:bg-brand-gold selection:text-brand-950">
+    <div id="root" class="relative z-10"></div>
+    <script>
+      // Generate Snowflakes
+      document.addEventListener('DOMContentLoaded', () => {
+        const snowflakeCount = 50;
+        const body = document.body;
+        
+        for(let i=0; i<snowflakeCount; i++) {
+          const snowflake = document.createElement('div');
+          snowflake.innerHTML = '❄';
+          snowflake.className = 'snowflake';
+          snowflake.style.left = Math.random() * 100 + 'vw';
+          snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's'; // 5-10s
+          snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+          snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+          snowflake.style.animationDelay = (Math.random() * 5) + 's';
+          body.appendChild(snowflake);
+        }
+      });
+    </script>
+  </body>
+</html>
